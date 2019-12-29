@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>虚拟机</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/public/css/common.css">
+    <link rel="stylesheet" href="/public/css/jishu.css">
+</head>
+<body>
+<div class="nav-img">
+    <div class="content">
+    	<div class="content_left">
+            <div>
+                <button>
+                    <a href="/">返回主页</a>
+                </button>
+            </div>
+            <br>
+            <h5 class="mb">Search</h5>
+            <input class="search mb" type="text" placeholder="Enter keyword here..."> <br>
+            <input class="button mb" type="submit" value="Search">
+             <ul class="new" style="height: 277px;">
+                <h5 class="mb">最新文章 </h5>
+                <li><a href="/knowledge/2019/12/16/jq.html">&nbsp;| &nbsp; JQuery</a></li>
+                <li><a href="/knowledge/2019/12/09/vm.html">&nbsp;| &nbsp; 虚拟机</a></li>
+                <li><a href="/life/2019/11/25/life1.html">&nbsp;| &nbsp; 心情</a></li>
+                <li><a href="/health/2019/10/22/health.html">&nbsp;| &nbsp; 健康</a></li>
+                <li><a href="/literture/2019/10/10/xiyou.html">&nbsp;| &nbsp; 西游记</a></li>
+            </ul>
+            <ul class="new" style="height: 277px;">
+                <h5 class="mb">类别 </h5>
+                <li><a href="class_jishu.html">&nbsp;| &nbsp; Heath</a></li>
+                <li><a href="class_shenghuo.html">&nbsp;| &nbsp; Knowledge</a></li>
+                <li><a href="class_xioashiqing.html">&nbsp;| &nbsp; Life</a></li>
+                <li><a href="class_jiankang.html">&nbsp;| &nbsp; Literture</a></li>
+            </ul>
+            <ul class="new" style="height: 180px;">
+                <h5 class="mb">档案馆 </h5>
+                <li><a href="record_1.html">&nbsp;| &nbsp; 2019年12月</a></li>
+                <li><a href="record_2.html">&nbsp;| &nbsp; 2019年11月</a></li>
+                <li><a href="record_3.html">&nbsp;| &nbsp; 2019年10月</a></li>
+            </ul>
+        </div>
+        <div class="content_right">
+            <div class="box11">
+            	<h3>虚拟机</h3>
+				<br>
+            	<div>
+                	<p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;无论是vmware,virtual box,virtual pc等虚拟机软件，一般来说，虚拟机有三种网络模式: 1.bridged（桥接方式， 默认使用vmnet0虚拟网卡)：直连物理网络 2.NAT (网络地址转换模式 ， 默认使用vmnet8虚拟网卡)：用于共享主机ip 3.Host-Only(仅主机模式 ， 默认使用vmnet1虚拟网卡 )：与主机共享的专用网络
+    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 在装完虚拟机之后，网络适配器中就会多出来两个虚拟网卡，VMnet1 和Vmnet8。VMnet0一般被隐藏。 在“网络和共享中心”查看。
+     <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    “VMware编辑” 在使用桥接模式的时候使用的是你的真实网卡，也就是有线网卡，所以有时候使用桥接模式 链接的时候会发现自己没有连通，原因可能是使用了无线网卡，在虚拟机桥接模式中将自动链接改 成自己的有线网卡就可以了。
+使用桥接模式因为使用的是真实网卡，所以占用了一个IP地址，但是可以和同局域网中的计 算机通信。使用only host模式和NAT模式就需要分别链接VMent1和Vment8虚拟网卡，这样就 不会占用真实网络中的IP地址。 这两种方式也是有区别的，only host模式顾名思义只能连接本主机。如果真实主机连通互联 网的话，那么使用NAT模式的虚拟机也可以访问互联网，这就是二者之间的差别。 
+ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+bridged 桥接网络是指本地物理网卡和虚拟网卡通过VMnet0虚拟交换机进行桥接，物理网卡和 虚拟网卡在拓扑图上处于同等地位，那么物理网卡和虚拟网卡就相当于处于同一个网段，虚 拟交换机就相当于一台现实网络中的交换机，所以两个网卡的IP地址也要设置为同一网段。 所以当我们要在局域网使用虚拟机，对局域网其他pc提供服务时，例如提供ftp，提供 ssh，提供http服务，那么就要选择桥接模式。 例如大学宿舍里有一个路由器，宿舍里四个人连接这个路由器，路由器的wanip就不理 会了，这个ip是动态获取的，而lanip默认是192.168.1.1,子网掩码是255.255.255.0。而其 他四个人是自动获取ip，假设四个人的ip是: A:192.168.1.100/255.255.255.0, B:192.168.1.101/255.255.255.0, C:192.168.1.102/255.255.255.0, D:192.168.1.103/255.255.255.0 那么虚拟机的ip可以设置的ip地址是192.168.1.2-192.168.1.99,192.168.1.104- 192.168.1.254(网络地址全0和全1的除外，再除去ABCD四个人的ip地址) 那么虚拟机的ip地址可以设置为192.168.1.98/255.255.255.0,设置了这个ip地址， ABCD这四个人就可以通过192.168.1.98访问虚拟机了，如果虚拟机需要上外网，那么还需 要配置虚拟机的路由地址，就是192.168.1.1了，这样，虚拟机就可以上外网了。 但是，上网我们一般是通过域名去访问外网的，所以我们还需要为虚拟机配置一个dns 服务器，我们可以简单点，把dns服务器地址配置为google的dns服务器:8.8.8.8,到此，虚 拟机就可以上网了。 NATNAT模式中，就是让虚拟机借助NAT(网络地址转换)功能，通过宿主机器所在的网络来 访问公网。他们是共享ip地址的。
+ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ NAT模式中，虚拟机的网卡和物理网卡的网络，不在同一个网络，虚拟机的网卡，是 在vmware提供的一个虚拟网络。 NAT和桥接的比较: (1) NAT模式和桥接模式虚拟机都可以上外网。 (2) 由于NAT的网络在vmware提供的一个虚拟网络里，所以局域网其他主机是无法访 问虚拟机的，而宿主机可以访问虚拟机，虚拟机可以访问局域网的所有主机，因为真实的局 域网相对于NAT的虚拟网络，就是NAT的虚拟网络的外网，不懂的人可以查查NAT的相关 知识。(3) 桥接模式下，多个虚拟机之间可以互相访问；NAT模式下，多个虚拟机之间也可以 相互访问。 如果你建一个虚拟机，只是给自己用，不需要给局域网其他人用，那么可以选择 NAT。毕竟NAT模式下的虚拟系统的TCP/IP配置信息是由VMnet8(NAT)虚拟网络的DHCP 服务器提供的，只要虚拟机的网路配置是DHCP，那么你不需要进行任何其他的配置，只需 要宿主机器能访问互联网即可，就可以让虚拟机联网了。 例如你想建多个虚拟机集群，作为测试使用，而宿主机可能是一个笔记本，ip不固定。 这种应用场景，我们需要采用nat模式了。但是我们要考虑一个问题，虚拟机之间是需要互 访的，默认采用dhcp，虚拟机的ip每次重启，ip都是不固定的，所以我们需要手工设置虚 拟机的ip地址。 但是我们对虚拟机网卡所在的虚拟网络的信息还一无所知，例如虚拟机网络的路由地
+但是我们对虚拟机网卡所在的虚拟网络的信息还一无所知，例如虚拟机网络的路由地 址，子网掩码，所以我们需要先查下nat虚拟网络的信息。 使用vmware,在Edit->Virtual Network Editor中配置好虚拟网络信息后看到下图所 示，注意VMnet8，VMnet8相当于是本机的一个路由，虚拟机设置NAT后就通过这个路由 进行上网的，可以查看其网络地址，路由地址，子网掩码。 选择VMnet8->NAT设置,可以看到子网ip显示为192.168.233.0，子网掩码是 255.255.255.0，那路由地址呢，其实就是网关IP了，都是同个东西，这里是 192.168.233.2。 接下来就好办了，在对应的虚拟机设置好ip，子网掩码，路由地址就可以上外网了，至 于dns可以设置为8.8.8.8.
+ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ Host-Only 在Host-Only模式下，虚拟网络是一个全封闭的网络，它唯一能够访问的就是主机。其 实Host-Only网络和NAT网络很相似，不同的地方就是Host-Only网络没有NAT服务，所以 虚拟网络不能连接到Internet。主机和虚拟机之间的通信是通过VMware Network Adepter VMnet1虚拟网卡来实现的。 Host-Only的宗旨就是建立一个与外界隔绝的内部网络，来提高内网的安全性。这个功 能或许对普通用户来说没有多大意义，但大型服务商会常常利用这个功能。 如果你想为VMnet1网段提供路由功能，那就需要使用RRAS，而不能使用XP或2000的 ICS，因为ICS会把内网的IP地址改为192.168.0.1，但虚拟机是不会给VMnet1虚拟网卡分 配这个地址的，那么主机和虚拟机之间就不能通信了。 
+ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ 综述在VMware的3中网络模式中，NAT模式是最简单的，基本不需要手动配置IP地址等相 关参数。至于桥接模式则需要额外的IP地址，如果是在内网环境中还很容易，如果是ADSL 宽带就比较麻烦了，ISP一般是不会大方的多提供一个公网IP的。
+                	</p>
+               	</div>
+				<br>
+                <div class="mb img">
+                    <img src="/public/img/vm.png" height="100%" width="100%"/>
+                </div>
+                
+            	
+        	</div>  
+    	</div>
+	</div>
+</div>
+
+</body>
+
+</html>
